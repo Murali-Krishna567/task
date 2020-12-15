@@ -1,0 +1,67 @@
+<!-- <div class="list row">
+    <div class="col-md-6">
+    <h1 style="text-align: center;">POST LIST</h1>
+  
+    
+    <br><br>
+    <ul class="list-group">
+      <ul *ngFor="let post of posts;let i = index" >
+         <ul *ngIf="i<(max)">
+        {{ post.title }}
+    </ul>
+</ul>
+
+
+
+    </ul>
+    </div>
+</div>
+    <a href="#" routerLink="/post/create/"   style="margin-left: 7%;"  class="btn btn-success">Add Post</a>
+     
+  -->
+  <div class="list row">
+    <div class="col-md-6">
+      <h4 style="text-align: center;">POST-LIST</h4>
+   <ul class="list-group">
+        <ul
+          
+          *ngFor="let post of posts; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveTutorial(post, i)"
+        >
+        <ul *ngIf="(i<max)"   class="list-group-item">
+            {{ post.title }}
+          </ul>
+        </ul>
+      </ul>
+      <button  style="margin-left: 8%;"  class="btn btn-success">
+        <a  class="btn btn-success" (click)="addpo()">Add Post</a></button>
+      </div>
+    <div class="col-md-6">
+      <div *ngIf="currentTutorial">
+        <h4></h4>
+        <div>
+          <label><strong>Title:</strong></label> {{ currentTutorial.title }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentTutorial.body }}
+        </div>
+        <div>
+          <label><strong></strong></label>
+      </div>
+      <br/>
+      
+        <a class="btn btn-primary" (click)="deletePost(currentTutorial.id)">
+          Delete
+        </a>
+      </div>
+      
+  
+      <div *ngIf="!currentTutorial">
+        <br />
+        <p>Please click on a POST...</p>
+      </div>
+    </div>
+  </div>
+  
